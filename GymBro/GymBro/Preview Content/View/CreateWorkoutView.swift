@@ -25,7 +25,6 @@ struct CreateWorkoutView: View {
         return viewModel.exercises.filter { $0.bodyPart == selectedBodyPart }
     }
 
-
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
@@ -33,16 +32,20 @@ struct CreateWorkoutView: View {
                 TextField("Workout Name", text: $workoutName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
-                
+                    .accessibilityLabel("Workout Name")
+                    .accessibilityHint("Enter the name of your workout")
+
                 // Filtro per parte del corpo
-                Picker("Parte del corpo", selection: $selectedBodyPart) {
+                Picker("Body Part", selection: $selectedBodyPart) {
                     ForEach(bodyParts, id: \.self) { part in
                         Text(part).tag(part)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
                 .padding(.horizontal)
-                
+                .accessibilityLabel("Body Part Filter")
+                .accessibilityHint("Select a body part to filter exercises")
+
                 // Lista degli esercizi filtrati
                 List(filteredExercises) { exercise in
                     HStack {
@@ -51,12 +54,15 @@ struct CreateWorkoutView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 80)
+                                .accessibilityHidden(true) // Nasconde l'immagine dal VoiceOver
                         }
                         VStack(alignment: .leading, spacing: 5) {
                             Text(exercise.name.capitalized)
                                 .font(.headline)
-                            Text("BodyPart: \(exercise.bodyPart.capitalized)")
+                                .accessibilityLabel(exercise.name.capitalized)
+                            Text("Body Part: \(exercise.bodyPart.capitalized)")
                                 .font(.subheadline)
+                                .accessibilityLabel("Body part: \(exercise.bodyPart.capitalized)")
                         }
                         Spacer()
                         // Pulsante per aggiungere l'esercizio
@@ -67,6 +73,8 @@ struct CreateWorkoutView: View {
                         }) {
                             Image(systemName: "plus.circle")
                                 .foregroundColor(.green)
+                                .accessibilityLabel("Add exercise")
+                                .accessibilityHint("Adds \(exercise.name.capitalized) to your workout")
                         }
                     }
                 }
@@ -86,22 +94,27 @@ struct CreateWorkoutView: View {
                     .cornerRadius(10)
                 }
                 .padding(.horizontal)
-                
+                .accessibilityLabel("Show or hide selected exercises")
+                .accessibilityHint(showSelectedExercises ? "Hide the selected exercises" : "Show the selected exercises")
+
                 // Sezione degli esercizi selezionati
                 if showSelectedExercises {
                     VStack(alignment: .leading) {
                         List {
                             ForEach(selectedExercises) { exercise in
                                 Text(exercise.name)
+                                    .accessibilityLabel(exercise.name)
                             }
                         }
-                        Button("Save Workout"){
+                        Button("Save Workout") {
                             if !workoutName.isEmpty {
                                 saveWorkout()
                                 presentationMode.wrappedValue.dismiss() // Chiudi la vista
                             }
                         }
                         .padding(.horizontal)
+                        .accessibilityLabel("Save Workout")
+                        .accessibilityHint("Saves the workout with the name \(workoutName)")
                     }
                     .padding(.top)
                 }
@@ -140,7 +153,6 @@ struct CreateWorkoutView: View {
         return []
     }
 }
-
 
 #Preview {
     CreateWorkoutView()

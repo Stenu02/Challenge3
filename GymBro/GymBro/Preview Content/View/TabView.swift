@@ -17,7 +17,7 @@ struct MainView: View {
                 WorkoutCalendarView()
              }
             Tab("Profile", systemImage: "person") {
-                MainPage()
+                ProfileView()
             }
         }
     }
