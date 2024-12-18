@@ -26,4 +26,4 @@ This is an iOS app built with Xcode that helps users to manage their workout.
 3. Run the app on a simulator or connected device.
 
 ## License
-All rights reserved
+ Apache License
