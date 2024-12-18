@@ -4,6 +4,10 @@ This is an iOS app built with Xcode that helps users to manage their workout.
 # Screenshot
 ![App Screenshot](Main.PNG)}
 
+![App Screenshot](Calendar.PNG)}
+
+
+
 ## Features
 - Bid database of excercices (Implemented by an Api)
 - Add, edit, and delete workout
