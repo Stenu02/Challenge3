@@ -2,7 +2,7 @@
 This is an iOS app built with Xcode that helps users to manage their workout.
 
 ##Screenshot
-![App Screenshot](Main.png)}
+![App Screenshot](Main.PNG)}
 ![App Screenshot](Calendar.png)}
 ![App Screenshot](Profile.png)}
 
