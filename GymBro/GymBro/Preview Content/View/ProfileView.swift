@@ -9,7 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct ProfileView: View {
-    // Variabili di stato per i dati utente
+ 
     @State private var firstName: String = UserDefaults.standard.string(forKey: "firstName") ?? ""
     @State private var lastName: String = UserDefaults.standard.string(forKey: "lastName") ?? ""
     @State private var birthDate: Date = UserDefaults.standard.object(forKey: "birthDate") as? Date ?? Date()
@@ -17,14 +17,13 @@ struct ProfileView: View {
     @State private var notes: String = UserDefaults.standard.string(forKey: "notes") ?? ""
     @State private var selectedImage: UIImage? = nil
     @State private var isPickerPresented = false
-    @State private var isEditing = false // Modalità modifica
-    @State private var showAlert = false // Per visualizzare l'alert
-
+    @State private var isEditing = false
+    @State private var showAlert = false
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    // Immagine del profilo
+               
                     ZStack {
                         if let image = selectedImage {
                             Image(uiImage: image)
@@ -94,7 +93,7 @@ struct ProfileView: View {
                         }
                     }
 
-                    // Pulsanti di azione
+                
                     if isEditing {
                         Button(action: saveProfile) {
                             Text("Save Changes")
@@ -144,7 +143,7 @@ struct ProfileView: View {
         UserDefaults.standard.set(weight, forKey: "weight")
         UserDefaults.standard.set(notes, forKey: "notes")
         
-        // Converti l'immagine in Data e salvala
+        
         if let selectedImage = selectedImage,
            let imageData = selectedImage.jpegData(compressionQuality: 0.8) {
             UserDefaults.standard.set(imageData, forKey: "profileImage")
@@ -160,8 +159,7 @@ struct ProfileView: View {
         birthDate = UserDefaults.standard.object(forKey: "birthDate") as? Date ?? Date()
         weight = UserDefaults.standard.string(forKey: "weight") ?? ""
         notes = UserDefaults.standard.string(forKey: "notes") ?? ""
-        
-        // Recupera l'immagine dai dati salvati
+   
         if let imageData = UserDefaults.standard.data(forKey: "profileImage") {
             selectedImage = UIImage(data: imageData)
         }
@@ -191,7 +189,7 @@ struct ProfileView: View {
     }
 }
 
-// Picker per selezionare un'immagine
+
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
 

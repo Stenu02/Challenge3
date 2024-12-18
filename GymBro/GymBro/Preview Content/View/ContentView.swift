@@ -10,8 +10,8 @@ import SDWebImageSwiftUI
 
 struct ExerciseListView: View {
     @StateObject private var viewModel = ExerciseViewModel()
-    @State private var selectedBodyPart: String = "Tutti" // Per il filtro
-    private let bodyParts = ["Tutti", "upper legs", "back", "armor", "waist", "shoulders","chest"] // Modifica in base ai dati disponibili
+    @State private var selectedBodyPart: String = "Tutti" 
+    private let bodyParts = ["Tutti", "upper legs", "back", "armor", "waist", "shoulders","chest"]
 
     var filteredExercises: [Exercise] {
         if selectedBodyPart == "Tutti" {
@@ -46,12 +46,12 @@ struct ExerciseListView: View {
                                 Text("Attrezzatura: \(exercise.equipment)")
                                     .font(.subheadline)
                                 
-                                // Visualizzare la GIF
+                                
                                 if let url = URL(string: exercise.gifUrl) {
                                     AnimatedImage(url: url)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: 150) // Modifica l'altezza come preferisci
+                                        .frame(height: 150)
                                 }
 
                                 Text("Muscoli secondari: \(exercise.secondaryMuscles.joined(separator: ", "))")

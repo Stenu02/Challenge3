@@ -18,7 +18,7 @@ struct WorkoutDetailView: View {
                 .font(.largeTitle)
                 .padding(.bottom)
 
-            // Lista degli esercizi
+      
             List {
                 ForEach(workout.exercises.indices, id: \.self) { index in
                     HStack{

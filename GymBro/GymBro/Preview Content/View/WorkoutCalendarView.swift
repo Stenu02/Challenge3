@@ -9,14 +9,14 @@ import SwiftUI
 
 struct WorkoutCalendarView: View {
     @State private var selectedDate = Date()
-    @State private var workoutSchedule: [String: [Workout]] = [:] // Mappa data -> allenamenti
+    @State private var workoutSchedule: [String: [Workout]] = [:]
     @State private var savedWorkouts: [Workout] = []
     @State private var selectedWorkoutsForDay: [Workout] = []
 
     var body: some View {
         NavigationView {
             VStack {
-                // Selettore della data
+                
                 Section(header: Text("Select a Date").font(.headline).padding(.top)) {
                     DatePicker("Select a Date", selection: $selectedDate, displayedComponents: .date)
                         .datePickerStyle(GraphicalDatePickerStyle())
@@ -49,7 +49,7 @@ struct WorkoutCalendarView: View {
                             }
                         }
                         .listStyle(PlainListStyle())
-                        //.padding(.horizontal)
+                        
                         .padding()
                     }
                     

@@ -8,7 +8,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct CreateWorkoutView: View {
-    @Environment(\.presentationMode) var presentationMode // Per controllare la chiusura della vista
+    @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = ExerciseViewModel()
     @State private var selectedBodyPart: String = "All"
     @State private var selectedExercises: [Exercise] = []
@@ -28,14 +28,13 @@ struct CreateWorkoutView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                // Campo per il nome del workout
                 TextField("Workout Name", text: $workoutName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
                     .accessibilityLabel("Workout Name")
                     .accessibilityHint("Enter the name of your workout")
 
-                // Filtro per parte del corpo
+                
                 Picker("Body Part", selection: $selectedBodyPart) {
                     ForEach(bodyParts, id: \.self) { part in
                         Text(part).tag(part)
@@ -46,7 +45,7 @@ struct CreateWorkoutView: View {
                 .accessibilityLabel("Body Part Filter")
                 .accessibilityHint("Select a body part to filter exercises")
 
-                // Lista degli esercizi filtrati
+            
                 List(filteredExercises) { exercise in
                     HStack {
                         if let url = URL(string: exercise.gifUrl) {
@@ -54,7 +53,7 @@ struct CreateWorkoutView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 80)
-                                .accessibilityHidden(true) // Nasconde l'immagine dal VoiceOver
+                                .accessibilityHidden(true)
                         }
                         VStack(alignment: .leading, spacing: 5) {
                             Text(exercise.name.capitalized)
@@ -65,7 +64,7 @@ struct CreateWorkoutView: View {
                                 .accessibilityLabel("Body part: \(exercise.bodyPart.capitalized)")
                         }
                         Spacer()
-                        // Pulsante per aggiungere l'esercizio
+                      
                         Button(action: {
                             if !selectedExercises.contains(where: { $0.id == exercise.id }) {
                                 selectedExercises.append(exercise)
@@ -79,7 +78,7 @@ struct CreateWorkoutView: View {
                     }
                 }
                 
-                // Bottone per mostrare/nascondere gli esercizi selezionati
+       
                 Button(action: {
                     showSelectedExercises.toggle()
                 }) {
@@ -97,7 +96,7 @@ struct CreateWorkoutView: View {
                 .accessibilityLabel("Show or hide selected exercises")
                 .accessibilityHint(showSelectedExercises ? "Hide the selected exercises" : "Show the selected exercises")
 
-                // Sezione degli esercizi selezionati
+                
                 if showSelectedExercises {
                     VStack(alignment: .leading) {
                         List {
@@ -109,7 +108,7 @@ struct CreateWorkoutView: View {
                         Button("Save Workout") {
                             if !workoutName.isEmpty {
                                 saveWorkout()
-                                presentationMode.wrappedValue.dismiss() // Chiudi la vista
+                                presentationMode.wrappedValue.dismiss() 
                             }
                         }
                         .padding(.horizontal)

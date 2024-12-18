@@ -73,7 +73,7 @@ struct MainPage: View {
                     Text("No saved workouts")
                 }
                 
-                // Lista degli allenamenti salvati con navigazione al dettaglio
+                
                 List {
                     ForEach($savedWorkouts) { $workout in
                         NavigationLink(destination: WorkoutDetailView(workout: $workout)) {
