@@ -27,9 +27,8 @@ struct WorkoutCalendarView: View {
                 Divider()
                     .padding(.horizontal)
                 
-                // HStack per le due sezioni orizzontali
                 HStack(spacing: 20) {
-                    // Sezione per assegnare un workout alla data selezionata
+                    
                     VStack(alignment: .leading) {
                         Text("Assign Workout")
                             .font(.headline)
@@ -58,7 +57,7 @@ struct WorkoutCalendarView: View {
                         .frame(height: 300)
                         .padding(.vertical)
                     
-                    // Sezione per mostrare i workout assegnati alla data selezionata
+                    
                     VStack(alignment: .leading) {
                         Text("Workouts for \(formattedDate(selectedDate))")
                             .font(.headline)
@@ -99,7 +98,7 @@ struct WorkoutCalendarView: View {
                 }
                 .padding(.horizontal)
             }
-            //.navigationTitle("Workout Calendar")
+          
             .onAppear {
                 loadWorkouts()
                 updateSelectedWorkoutsForDay()
@@ -171,7 +170,7 @@ struct WorkoutCalendarView: View {
     }
 
     private func cleanupDeletedWorkouts() {
-        // Rimuove gli allenamenti assegnati che non esistono più
+       
         for (date, workouts) in workoutSchedule {
             workoutSchedule[date] = workouts.filter { savedWorkouts.contains($0) }
         }
