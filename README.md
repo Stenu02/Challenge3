@@ -1,7 +1,7 @@
 # GymBro - Lift Like a Bro
 This is an iOS app built with Xcode that helps users to manage their workout.
 
-##Screenshot
+# Screenshot
 ![App Screenshot](Main.PNG)}
 ![App Screenshot](Calendar.PNG)}
 ![App Screenshot](Profile.PNG)}
@@ -13,7 +13,7 @@ This is an iOS app built with Xcode that helps users to manage their workout.
 - Set your personal profile
 - VoiceOver support 
 
-##Credit
+## Credit
 -[RapidApi] - https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb
 
 ## Installation
@@ -21,5 +21,5 @@ This is an iOS app built with Xcode that helps users to manage their workout.
 2. Open the project in Xcode.
 3. Run the app on a simulator or connected device.
 
-##License
+## License
 All right reserved
